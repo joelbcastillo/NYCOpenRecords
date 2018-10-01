@@ -1027,7 +1027,8 @@ def _acknowledgment_letter_handler(request_id, data):
         point_of_contact_user = assign_point_of_contact(acknowledgment.get('point_of_contact', None))
 
         template = render_template_string(contents.content,
-                                          days=acknowledgment['days'],
+                                          days=acknowledgment['days'] if acknowledgment['days'] != "-1" else None,
+                                          due_date=acknowledgment['date'],
                                           date=request.date_submitted,
                                           user=point_of_contact_user)
 
