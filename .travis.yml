@@ -3,7 +3,7 @@ python:
   - 3.5.3
 install: 
 - pip install -r requirements/dev.txt
-- pip install codecov
+- pip install pytest pytest-cov
 before_script:
   - psql -c 'create database openrecords_test;' -U postgres
   - psql -c 'create user testuser;' -U postgres
@@ -17,6 +17,6 @@ services:
   - redis-server
   - elasticsearch
 script: 
-  - pytest -v "tests/"
+  - pytest -v "tests/" --cov=./
 after_success:
   - codecov
