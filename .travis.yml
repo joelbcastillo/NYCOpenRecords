@@ -3,7 +3,7 @@ python:
   - 3.5.3
 install: 
 - pip install -r requirements/dev.txt
-- pip install pytest pytest-cov
+- pip install pytest pytest-cov codecov
 before_script:
   - psql -c 'create database openrecords_test;' -U postgres
   - psql -c 'create user testuser;' -U postgres
