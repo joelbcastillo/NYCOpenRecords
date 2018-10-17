@@ -14,4 +14,7 @@ services:
   - postgresql
   - redis-server
   - elasticsearch
-script: pytest -v "tests/"
+script: 
+  - pytest -v "tests/"
+after_success:
+  - bash < (curl -s https://codecov.io/bash)
